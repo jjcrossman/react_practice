@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Practicing React</title>
+
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.js"></script>
+  </head>
+
+    <body>
+
+      <div id="area"></div>
+  <script type="text/babel">
+
+  const HelloWorld = React.createClass( {
+
+    propTypes: {
+      name: React.PropTypes.string
+      , isPerson: React.PropTypes.bool
+    }
+    , getDefaultProps() {
+      return {
+        name: "HelloWorld's Default"
+      }
+    }
+    , getInitialState() {
+      return {
+        value: 1
+      }
+    }
+    , componentDidMount() {
+
+    }
+    , _increaseByOne() {
+      this.setState( {
+        value: this.state.value + 1
+      } );
+    }
+    , render() {
+      let greeting = "World";
+      if ( this.props.isPerson ) {
+        greeting = (<Person name={this.props.name} />)
+      }
+      return (
+        <div>
+        <h1>Hello {greeting}</h1>
+        <p>{this.state.value}</p>
+        <button onClick={this._increaseByOne}>Click Me</button>
+        </div>
+      )
+    }
+  } );
+
+  const Person = React.createClass( {
+
+    propTypes: {
+      name: React.PropTypes.string.isRequired
+    }
+    , getDefaultProps() {
+      return {
+        name: "Person's Default"
+      }
+    }
+    , render() {
+      return (
+        <span>{ this.props.name }</span>
+      )
+    }
+  } );
+
+    ReactDOM.render(
+    <HelloWorld name="Bernice" isPerson={false} />,
+    document.getElementById('area')
+  );
+  </script>
+
+
+
+
+
+
+
+        <!-- SCRIPTS --->
+
+
+
+        <!-- Angular and UI-Router -->
+
+        <!-- App -->
+
+        <!-- Directives -->
+
+        <!-- Controllers -->
+
+        <!-- Services -->
+
+    </body>
+
+</html>
